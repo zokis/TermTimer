@@ -78,11 +78,19 @@ class TermTimer(object):
         else:
             self.restart()
 
+    def get_progress_bar(self, time):
+        size = 38
+        rest = int(time * size / self.timing)
+        progress = size - rest
+        return "[%s%s]" % ("="*progress, "-"*rest)
+
     def clocking(self):
-        print "%s" % self.font.n_green__gray
+        print self.font.n_green
+        print "%s" % self.font.bg_gray
         for i in range(self.timing, -1, -1):
             self.cls()
             print self.font.text_renderer("%0.2d" % (i / 60) + ":" + "%0.2d" % (i % 60))
+            print self.get_progress_bar(i)
             timer.sleep(1.0)
         self.end()
 
