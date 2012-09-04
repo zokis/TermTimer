@@ -8,6 +8,7 @@ import os
 import sys
 import optparse
 import platform
+from pygame import mixer, init
 
 EXIT = 0
 ERROR = 2
@@ -17,6 +18,9 @@ from fonte import FonteZokis
 
 
 class TermTimer(object):
+    init()
+    sound = mixer.Sound('beep.wav')
+
     def __init__(self, time=None, notnow=True, c='m'):
         self.font = FonteZokis()
         self.timing = 5
@@ -64,6 +68,7 @@ class TermTimer(object):
         self.restart()
 
     def restart(self):
+        self.sound.play()
         self.cls()
         print "%s" % self.font.n_green
         self.cls()
@@ -82,7 +87,7 @@ class TermTimer(object):
         size = 38
         rest = int(time * size / self.timing)
         progress = size - rest
-        return "[%s%s]" % ("="*progress, "-"*rest)
+        return "[%s%s]" % ("=" * progress, "-" * rest)
 
     def clocking(self):
         print self.font.n_green
