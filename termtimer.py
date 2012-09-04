@@ -8,12 +8,12 @@ import os
 import sys
 import optparse
 import platform
-from pygame import mixer, init
 
 EXIT = 0
 ERROR = 2
 SUCSSES = 1
 
+from pygame import mixer, init
 from fonte import FonteZokis
 
 
@@ -29,7 +29,6 @@ class TermTimer(object):
             self.timing = time
             if c == 'm':
                 self.timing = int(self.timing * 60)
-
             if notnow:
                 raw_input("Press Enter")
         else:
@@ -37,7 +36,7 @@ class TermTimer(object):
 
     def in_set_time(self):
         try:
-            print "%sEnter time to time" % self.font.n_green
+            print "%sEnter the time for timing" % self.font.n_green
             print "0 to %sexit" % self.font.n_blue
             print "%snothing to %s5 %sminutes" % (self.font.n_green, self.font.n_blue, self.font.n_green)
             timing = raw_input("%s>> %s" % (self.font.n_red, self.font.n_green))
