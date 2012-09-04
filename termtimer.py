@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 # Timer in Terminal
-# Desenvolvido por: Marcelo Fonseca Tambalo - https://gist.github.com/3493575
+# Desenvolvido por: Marcelo Fonseca Tambalo - https://github.com/zokis/TermTimer
 
 import time as timer
 import os
