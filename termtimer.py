@@ -56,6 +56,7 @@ class TermTimer(object):
         self.timing = int(timing * 60)
 
     def end(self):
+        self.sound.play()
         str_fim = ' Time Out! ' * 5
         self.cls()
         if platform.system() == 'Linux':
@@ -67,7 +68,6 @@ class TermTimer(object):
         self.restart()
 
     def restart(self):
-        self.sound.play()
         self.cls()
         print "%s" % self.font.n_green
         self.cls()
