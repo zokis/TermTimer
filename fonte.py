@@ -10,7 +10,7 @@ class FonteASCIIArt(object):
         'n_green': '\033[01;32m', 'blue': '\033[34m',
         'n_blue': '\033[01;34m',
         'default': '\033[00;00m',
-        'n_green__gray': '\033[01;40m'}
+        'bg_gray': '\033[01;40m'}
     lines = 0
     character_list = tuple()
     character_map = {}
