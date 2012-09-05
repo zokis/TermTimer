@@ -9,12 +9,12 @@ import sys
 import optparse
 import platform
 
+from pygame import mixer, init
+from utils.fonte import FonteZokis
+
 EXIT = 0
 ERROR = 2
 SUCSSES = 1
-
-from pygame import mixer, init
-from utils.fonte import FonteZokis
 
 
 class TermTimer(object):
