@@ -9,17 +9,18 @@ import sys
 import optparse
 import platform
 
+from pygame import mixer, init
+
+from utils.fonte import FonteZokis
+
 EXIT = 0
 ERROR = 2
 SUCSSES = 1
 
-from pygame import mixer, init
-from fonte import FonteZokis
-
 
 class TermTimer(object):
     init()
-    sound = mixer.Sound('beep.wav')
+    sound = mixer.Sound('sound/beep.wav')
 
     def __init__(self, time=None, notnow=True, c='m'):
         self.font = FonteZokis()
