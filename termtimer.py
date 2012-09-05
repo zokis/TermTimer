@@ -14,7 +14,7 @@ ERROR = 2
 SUCSSES = 1
 
 from pygame import mixer, init
-from fonte import FonteZokis
+from utils.fonte import FonteZokis
 
 
 class TermTimer(object):
