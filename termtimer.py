@@ -10,6 +10,7 @@ import optparse
 import platform
 
 from pygame import mixer, init
+
 from utils.fonte import FonteZokis
 
 EXIT = 0
