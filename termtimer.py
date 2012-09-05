@@ -19,7 +19,7 @@ from fonte import FonteZokis
 
 class TermTimer(object):
     init()
-    sound = mixer.Sound('beep.wav')
+    sound = mixer.Sound('sound/beep.wav')
 
     def __init__(self, time=None, notnow=True, c='m'):
         self.font = FonteZokis()
