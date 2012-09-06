@@ -9,7 +9,7 @@ import sys
 import optparse
 import platform
 
-#from pygame import mixer, init
+from pygame import mixer, init
 
 from utils.fonte import FonteZokis
 
@@ -55,6 +55,8 @@ class TermTimer(object):
         if timing < 0:
             timing *= -1
         self.timing = int(timing * 60)
+        if self.timing < 1:
+            self.timing += 1
 
     def end(self):
         self.sound.play()
