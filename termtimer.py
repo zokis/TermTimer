@@ -9,7 +9,7 @@ import sys
 import optparse
 import platform
 
-from pygame import mixer, init
+#from pygame import mixer, init
 
 from utils.fonte import FonteZokis
 
@@ -22,13 +22,13 @@ class TermTimer(object):
     init()
     sound = mixer.Sound('sound/beep.wav')
 
-    def __init__(self, time=None, notnow=True, c='m'):
+    def __init__(self, time=None, notnow=True, in_sec=False):
         self.font = FonteZokis()
         self.timing = 5
         self.cls = self.font.cls
         if time:
             self.timing = time
-            if c == 'm':
+            if not in_sec:
                 self.timing = int(self.timing * 60)
             if notnow:
                 raw_input("Press Enter")
@@ -109,9 +109,9 @@ def main(argv):
     options, args = opar.parse_args(argv)
 
     if options.sec:
-        tc = TermTimer(options.sec, options.notnow, 's')
+        tc = TermTimer(options.sec, options.notnow, True)
     elif options.min:
-        tc = TermTimer(options.min, options.notnow, 'm')
+        tc = TermTimer(options.min, options.notnow, False)
     else:
         tc = TermTimer()
     tc.clocking()
