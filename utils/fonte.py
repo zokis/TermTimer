@@ -19,6 +19,9 @@ class FonteASCIIArt(object):
     def reset(self):
         print "%s" % self.codes['reset']
 
+    def cls(self):
+        os.system(['clear', 'cls'][int(os.name == 'nt')])
+
     def colorize(self, color_key, text):
         return self.codes[color_key] + text + self.codes["reset"]
 
@@ -33,9 +36,6 @@ class FonteASCIIArt(object):
             self.__dict__[name] = value
         else:
             raise ""
-
-    def cls(self):
-        os.system(['clear', 'cls'][os.name == 'nt'])
 
     def text_renderer(self, text):
         rendered_text = ''
