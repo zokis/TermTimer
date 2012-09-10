@@ -9,7 +9,7 @@ import sys
 import optparse
 import platform
 
-from pygame import mixer, init
+#from pygame import mixer, init
 
 from utils.fonte import FonteZokis
 
@@ -19,13 +19,14 @@ SUCSSES = 1
 
 
 class TermTimer(object):
-    init()
-    sound = mixer.Sound('sound/beep.wav')
+    #init()
+    #sound = mixer.Sound('sound/beep.wav')
 
     def __init__(self, time=None, notnow=True, in_sec=False):
         self.font = FonteZokis()
         self.timing = 5
         self.cls = self.font.cls
+        self.reset = self.font.reset
         if time:
             self.timing = time
             if not in_sec:
@@ -37,10 +38,11 @@ class TermTimer(object):
 
     def in_set_time(self):
         try:
-            print "%sEnter the time for timing" % self.font.n_green
-            print "0 to %sexit" % self.font.n_blue
-            print "%snothing to %s5 %sminutes" % (self.font.n_green, self.font.n_blue, self.font.n_green)
-            timing = raw_input("%s>> %s" % (self.font.n_red, self.font.n_green))
+            print self.font.colorize('green', 'Enter the time for timing')
+            print self.font.colorize('green', '0 to') + self.font.colorize('blue', ' exit')
+            print (self.font.colorize('green', 'nothing to ') + self.font.colorize('blue', '5 ') +
+                self.font.colorize('green', 'minutes'))
+            timing = raw_input(self.font.colorize('red', '>> '))
         except:
             sys.exit(ERROR)
         if timing == '0':
@@ -59,7 +61,7 @@ class TermTimer(object):
             self.timing += 1
 
     def end(self):
-        self.sound.play()
+        #self.sound.play()
         str_fim = ' Time Out! ' * 5
         self.cls()
         if platform.system() == 'Linux':
@@ -72,14 +74,15 @@ class TermTimer(object):
 
     def restart(self):
         self.cls()
-        print "%s" % self.font.n_green
+        self.reset()
         self.cls()
-        op = raw_input("%sTiming again? %s(y/n)%s: " % (self.font.n_green,
-            self.font.n_blue, self.font.n_green))
+        
+        op = raw_input(self.font.colorize('green', 'Timing again? ') +
+            self.font.colorize('turquoise', '(y/n)') + self.font.colorize('green', ': '))
         if op in ("y", "Y"):
             self.clocking()
         elif op in ("n", "N"):
-            print "%s" % self.font.default
+            self.reset()
             self.cls()
             sys.exit(EXIT)
         else:
@@ -89,11 +92,10 @@ class TermTimer(object):
         size = 38
         rest = int(time * size / self.timing)
         progress = size - rest
-        return "[%s%s]" % ("=" * progress, "-" * rest)
+        return "[%s>%s]" % ("=" * progress, "-" * rest)
 
     def clocking(self):
-        print self.font.n_green
-        print "%s" % self.font.bg_gray
+        print "%s" % self.font.codes['bg_gray']
         for i in range(self.timing, -1, -1):
             self.cls()
             print self.font.text_renderer("%0.2d" % (i / 60) + ":" + "%0.2d" % (i % 60))
