@@ -89,7 +89,7 @@ class TermTimer(object):
             self.restart()
 
     def get_progress_bar(self, time):
-        size = 38
+        size = 37
         rest = int(time * size / self.timing)
         progress = size - rest
         return "[%s>%s]" % ("=" * progress, "-" * rest)
