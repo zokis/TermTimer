@@ -76,7 +76,7 @@ class TermTimer(object):
         self.cls()
         self.reset()
         self.cls()
-        
+
         op = raw_input(self.font.colorize('green', 'Timing again? ') +
             self.font.colorize('turquoise', '(y/n)') + self.font.colorize('green', ': '))
         if op in ("y", "Y"):
