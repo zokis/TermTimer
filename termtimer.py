@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 # Timer in Terminal
-# Desenvolvido por: Marcelo Fonseca Tambalo - https://github.com/zokis/TermTimer
+# Desenvolvido por: Marcelo Fonseca Tambalo
+# https://github.com/zokis/TermTimer
 
 import time as timer
 import os
@@ -38,10 +39,12 @@ class TermTimer(object):
 
     def in_set_time(self):
         try:
-            print self.font.colorize('green', 'Enter the time for timing')
-            print self.font.colorize('green', '0 to') + self.font.colorize('blue', ' exit')
-            print (self.font.colorize('green', 'nothing to ') + self.font.colorize('blue', '5 ') +
-                self.font.colorize('green', 'minutes'))
+            print (self.font.colorize('green', 'Enter the time for timing'))
+            print (self.font.colorize('green', '0 to') +
+                   self.font.colorize('blue', ' exit'))
+            print (self.font.colorize('green', 'nothing to ') +
+                   self.font.colorize('blue', '5 ') +
+                   self.font.colorize('green', 'minutes'))
             timing = raw_input(self.font.colorize('red', '>> '))
         except:
             sys.exit(ERROR)
@@ -78,7 +81,8 @@ class TermTimer(object):
         self.cls()
 
         op = raw_input(self.font.colorize('green', 'Timing again? ') +
-            self.font.colorize('turquoise', '(y/n)') + self.font.colorize('green', ': '))
+                       self.font.colorize('turquoise', '(y/n)') +
+                       self.font.colorize('green', ': '))
         if op in ("y", "Y"):
             self.clocking()
         elif op in ("n", "N"):
@@ -98,7 +102,8 @@ class TermTimer(object):
         print "%s" % self.font.codes['bg_gray']
         for i in range(self.timing, -1, -1):
             self.cls()
-            print self.font.text_renderer("%0.2d" % (i / 60) + ":" + "%0.2d" % (i % 60))
+            print self.font.text_renderer("%0.2d" % (i / 60) +
+                                          ":" + "%0.2d" % (i % 60))
             print self.get_progress_bar(i)
             timer.sleep(1.0)
         self.end()
@@ -106,9 +111,13 @@ class TermTimer(object):
 
 def main(argv):
     opar = optparse.OptionParser()
-    opar.add_option("-s", "--sec", dest="sec", help="time in seconds", type="int", default=None)
-    opar.add_option("-m", "--min", dest="min", help="time in minutes", type="float", default=None)
-    opar.add_option("-n", "--notnow", dest="notnow", help="the timer does not start now", default=False, action="store_true")
+    opar.add_option("-s", "--sec", dest="sec",
+                    help="time in seconds", type="int", default=None)
+    opar.add_option("-m", "--min", dest="min",
+                    help="time in minutes", type="float", default=None)
+    opar.add_option("-n", "--notnow", dest="notnow",
+                    help="the timer does not start now", default=False,
+                    action="store_true")
 
     options, args = opar.parse_args(argv)
 
