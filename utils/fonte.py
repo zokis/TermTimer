@@ -6,44 +6,12 @@ import os
 
 
 class FonteASCIIArt(object):
-    codes = {'': '', 'yellow': '\x1b[33;01m', 'blink': '\x1b[05m',
-             'lightgray': '\x1b[37m', 'bg_gray': '\x1b[01;40m',
-             'underline': '\x1b[04m', 'darkyellow': '\x1b[33m',
-             'blue': '\x1b[34;01m', 'darkblue': '\x1b[34m', 'faint':
-             '\x1b[02m', 'fuchsia': '\x1b[35;01m', 'black': '\x1b[30m',
-             'white': '\x1b[01m', 'red': '\x1b[31;01m', 'brown':
-             '\x1b[33m', 'turquoise': '\x1b[36;01m',
-             'bold': '\x1b[01m', 'darkred': '\x1b[31m', 'darkgreen':
-             '\x1b[32m', 'reset': '\x1b[39;49;00m', 'standout':
-             '\x1b[03m', 'darkteal': '\x1b[36;01m', 'darkgray':
-             '\x1b[30;01m', 'overline': '\x1b[06m', 'purple':
-             '\x1b[35m', 'green': '\x1b[32;01m', 'teal': '\x1b[36m',
-             'fuscia': '\x1b[35;01m'}
-
     lines = 0
     character_list = tuple()
     character_map = {}
 
-    def reset(self):
-        print "%s" % self.codes['reset']
-
     def cls(self):
         os.system(['clear', 'cls'][int(os.name == 'nt')])
-
-    def colorize(self, color_key, text):
-        return self.codes[color_key] + text + self.codes["reset"]
-
-    def add_color(self, name, value):
-        if name not in self.__dict__:
-            self.__dict__[name] = value
-        else:
-            raise ""
-
-    def update_color(self, name, value):
-        if name in self.__dict__:
-            self.__dict__[name] = value
-        else:
-            raise ""
 
     def text_renderer(self, text):
         rendered_text = ''
