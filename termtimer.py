@@ -82,7 +82,7 @@ class TermTimer(object):
         if op in ("y", "Y"):
             self.clocking()
         elif op in ("n", "N"):
-            print "%s" % console.reset_color()
+            print console.reset_color()
             self.cls()
             sys.exit(EXIT)
         else:
@@ -95,7 +95,7 @@ class TermTimer(object):
         return "[%s>%s]" % ("=" * progress, "-" * rest)
 
     def clocking(self):
-        print "%s" % console.codes['bg_gray']
+        print console.codes['bg_gray']
         for i in range(self.timing, -1, -1):
             self.cls()
             print self.font.text_renderer("%0.2d" % (i / 60) +
