@@ -57,8 +57,6 @@ class TermTimer(object):
         if timing < 0:
             timing *= -1
         self.timing = int(timing * 60)
-        if self.timing < 1:
-            self.timing += 1
 
     def end(self):
         str_fim = ' Time Out! ' * 5
@@ -90,7 +88,10 @@ class TermTimer(object):
 
     def get_progress_bar(self, time):
         size = 37
-        rest = int(time * size / self.timing)
+        try:
+            rest = int(time * size / self.timing)
+        except ZeroDivisionError:
+            rest = 0
         progress = size - rest
         return "[%s>%s]" % ("=" * progress, "-" * rest)
 
